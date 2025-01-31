@@ -12,7 +12,7 @@ namespace SRC.Infrastructure
             GameObject.CreatePrimitive( PrimitiveType.Cube ).transform.position = position;
         }
         
-        [ConsoleMethod( "command", "Execute a command to controle rover" )]
+        [ConsoleMethod( "command", "Execute a command to control rover" )]
         public static void ExecuteCommand( String command )
         {
             Debug.Log(command);
