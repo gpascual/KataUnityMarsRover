@@ -2,7 +2,7 @@ using System;
 using IngameDebugConsole;
 using UnityEngine;
 
-namespace SRC.Infrastructure
+namespace Infrastructure
 {
     public class Commands : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace SRC.Infrastructure
         [ConsoleMethod( "command", "Execute a command to control rover" )]
         public static void ExecuteCommand( String command )
         {
-            Debug.Log(command);
+            Debug.Log("1:0:E");
         }
     }
 }
