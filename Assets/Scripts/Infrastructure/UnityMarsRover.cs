@@ -1,4 +1,3 @@
-using System;
 using Domain;
 using IngameDebugConsole;
 using UnityEngine;
@@ -15,15 +14,11 @@ namespace Infrastructure
             marsRover = new MarsRover(unityMotor);
             DebugLogConsole.AddCommand( "forward", "Move rover forward ", MoveForward );
         }
-
-        private void Update()
-        {
-            //marsRover.MoveForward();
-        }
         
         public void MoveForward()
         {
             marsRover.MoveForward();
+            Debug.Log("1:0:E");
         }
     }
 }
