@@ -13,5 +13,15 @@ namespace Domain
         {
             motor.Forward(1);
         }
+
+        public void TurnLeft()
+        {
+            motor.Turn(90);
+        }
+        
+        public void TurnRight()
+        {
+            motor.Turn(-90);
+        }
     }
 }

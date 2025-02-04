@@ -8,6 +8,7 @@ namespace Infrastructure
     {
         private readonly CharacterController characterController;
         private float moveSpeed = 5f;
+        private float turnSpeed = 90f;
 
         public UnityMotor(CharacterController characterController)
         {
@@ -16,8 +17,13 @@ namespace Infrastructure
 
         public void Forward(int distanceInMeters)
         {
-            Vector3 targetPosition = characterController.transform.position + characterController.transform.forward * distanceInMeters;
+            Vector3 targetPosition = characterController.transform.position + characterController.transform.forward * distanceInMeters *10;
             CoroutineRunner.Instance.RunCoroutine(MoveToTarget(targetPosition));
+        }
+        
+        public void Turn(float angleDegrees)
+        {
+            CoroutineRunner.Instance.RunCoroutine(TurnToAngle(angleDegrees));
         }
 
         private IEnumerator MoveToTarget(Vector3 targetPosition)
@@ -33,6 +39,31 @@ namespace Infrastructure
             }
             
             characterController.transform.position = targetPosition;
+        }
+        
+        private IEnumerator TurnToAngle(float angleDegrees)
+        {
+            float currentRotation = 0f;
+
+            while (Mathf.Abs(currentRotation) < Mathf.Abs(angleDegrees))
+            {
+                // Calcular el ángulo a rotar en este frame
+                float rotationStep = Mathf.Sign(angleDegrees) * turnSpeed * Time.deltaTime;
+
+                // Evitar sobrepasar el ángulo objetivo
+                if (Mathf.Abs(currentRotation + rotationStep) > Mathf.Abs(angleDegrees))
+                {
+                    rotationStep = angleDegrees - currentRotation;
+                }
+
+                // Rotar el transform del CharacterController
+                characterController.transform.Rotate(0, rotationStep, 0);
+
+                // Acumular la rotación aplicada
+                currentRotation += rotationStep;
+
+                yield return null;
+            }
         }
     }
 }

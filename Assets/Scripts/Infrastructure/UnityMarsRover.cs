@@ -13,12 +13,24 @@ namespace Infrastructure
             UnityMotor unityMotor = new UnityMotor(gameObject.GetComponent<CharacterController>());
             marsRover = new MarsRover(unityMotor);
             DebugLogConsole.AddCommand( "forward", "Move rover forward ", MoveForward );
+            DebugLogConsole.AddCommand( "left", "Turn rover left ", TurnLeft );
+            DebugLogConsole.AddCommand( "right", "Turn rover right ", TurnRight );
         }
         
         public void MoveForward()
         {
             marsRover.MoveForward();
             Debug.Log("1:0:E");
+        }
+
+        public void TurnLeft()
+        {
+            marsRover.TurnLeft();
+        }
+        
+        public void TurnRight()
+        {
+            marsRover.TurnRight();
         }
     }
 }
