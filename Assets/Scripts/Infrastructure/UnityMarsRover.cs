@@ -10,7 +10,7 @@ namespace Infrastructure
 
         private void Start()
         {
-            UnityMotor unityMotor = new UnityMotor(gameObject.GetComponent<CharacterController>());
+            DotTweenMotor unityMotor = new DotTweenMotor(gameObject.GetComponent<Transform>());
             marsRover = new MarsRover(unityMotor);
             DebugLogConsole.AddCommand( "forward", "Move rover forward ", MoveForward );
             DebugLogConsole.AddCommand( "left", "Turn rover left ", TurnLeft );
