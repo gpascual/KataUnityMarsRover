@@ -10,7 +10,7 @@ namespace Infrastructure
     {
         private MarsRover marsRover;
         public List<GameObject> roverWheels = new List<GameObject>();
-        public Transform transform;
+        public new Transform transform;
 
         private void Start()
         {
