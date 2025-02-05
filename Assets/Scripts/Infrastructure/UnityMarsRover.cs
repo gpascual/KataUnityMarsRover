@@ -44,12 +44,10 @@ namespace Infrastructure
         {
             foreach (GameObject roverWheel in roverWheels)
             {
-                // Reinicia cualquier rotación pendiente
                 roverWheel.transform.DOKill();
-
-                // Aplicar rotación alrededor del eje local X
+                
                 roverWheel.transform.DOLocalRotate(new Vector3(360f, 0, 0), 0.8f, RotateMode.LocalAxisAdd)
-                    .SetEase(Ease.Linear);
+                    .SetEase(Ease.InOutSine);
             }
         }
     }
