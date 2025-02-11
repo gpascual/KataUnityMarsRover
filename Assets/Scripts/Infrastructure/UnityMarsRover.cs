@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Domain;
@@ -19,8 +20,31 @@ namespace Infrastructure
             DebugLogConsole.AddCommand( "forward", "Move rover forward ", MoveForward );
             DebugLogConsole.AddCommand( "left", "Turn rover left ", TurnLeft );
             DebugLogConsole.AddCommand( "right", "Turn rover right ", TurnRight );
+            DebugLogConsole.AddCommand<String>("command", "Process the received commands", Command);
         }
-        
+
+        private void Command(string commands)
+        {
+            /*
+             *
+             * - f -> new MoveForward(marsRover)
+             * - r -> new TurnRight(marsRover)
+             * - l -> new TurnLeft(marsRover)
+             *
+             * new CommandSequence(...);
+             *
+             *
+             * CommandInterpreter
+             *
+             * loop
+             *
+             * - MoveForward -> MoveForwardHandler
+             * - TurnRight -> TurnRightHandler
+             * - TurnLeft -> TurnLeftHandler
+             */
+            Debug.Log(commands);
+        }
+
         public void MoveForward()
         {
             SpinWheels();
